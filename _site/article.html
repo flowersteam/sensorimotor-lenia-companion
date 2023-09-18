@@ -1,0 +1,1209 @@
+<dt-article>
+
+<h1>Learning Sensorimotor Agency <br>  in Cellular Automata</h1>
+<h2 id='finding-robust-selforganizing-agents-with-gradient-descent-and-curriculum-learning-individuality-selfmaintenance-and-sensorimotricity-within-a-cellular-automaton-environment'>Finding robust self-organizing &quot;agents&quot; with gradient descent and curriculum learning: individuality, self-maintenance and sensori-motricity within a cellular automaton environment</h2>
+
+
+<div class="l-page">
+<video id="robust" width="95%"  autoplay controls="" loop muted="" class="videoShow">
+                 <source src="public/demo.mp4" type="video/mp4">
+               </video>
+              
+</div>
+
+
+<h2 id='interactive-demo'>Interactive Demo</h2>
+<d-content style="padding-top:0">
+<nav style="margin-left:2em;">
+<p><a href="https://colab.research.google.com/drive/11mYwphZ8I4aur8KuHRR1HEg6ST5TI0RW#scrollTo=l6D-g1Q38yyC" class="colab-root">Reproduce in a <span class="colab-span">Notebook</span></a></p>
+</nav>
+<nav id="infoDemoAdvanced" style="margin-left:2em;display:none">
+      
+      <li> <b>Press play to begin</b> </li>
+      <li>Place creature by clicking on the dark screen with  <b>Creature</b> mode selected)</li>
+      <li>(Note that the multi creature setting was not seen during training)</li>
+      <li>Now place obstacles by selecting <b>Wall dot</b> and then clicking or dragging  on the screen  </li>
+      <li>You can erase by selecting the <b>Eraser</b> mode and then clicking or dragging on the screen  </li>
+      <li> You can choose the brush size to draw bigger obstacles/ clear bigger areas etc</li>
+      <li> To zoom, select zoom mode, select zoom magnitude with the slider and then click where you want to zoom<br>Keep dragging to follow the creature </li>
+<li> For the attractor, click and drag for a short distance attractor (Still experimental, works best with creature 2) </li>       
+ 
+  </nav>
+<nav id="infoDemo" style="margin-left:2em;display:block">
+
+<li> The demo displays  a differentiable continuous cellular automaton (CA) system where an emerging "creature" (yellow) is the result of local rules applied on the whole grid. The blue elements are obstacles (and are also part of the CA system).The rules leading to these very robust creatures were obtained using gradient descent,diversity search and curriculum learning.   </li>
+    <li> <b>Press play to begin</b>  (The demo won't work on phone) </li>
+      <li>Choose the type of creature on the left (each creature morphology is the result of different rules in the CA)</li>
+      <li>Choose pre defined environments at the bottom </li>
+      <li>Draw obstacles by clicking on the canvas  </li>
+<li>More options available at Advanced Options  </li>
+  </nav>
+    </d-content>
+<div class="radio-toolbar" id="radioCrea" style="float:left;margin-left:calc(50% - 1284px/2);width:50px">
+   <input type="radio" id="demoButton1" name="optionCrea" value="1" checked>
+   <label for="demoButton1" id="labelDemoButton1" onclick="setSpecies(0);document.getElementById('getStarted1').style.display='block';document.getElementById('getStarted2').style.display='none';document.getElementById('getStarted3').style.display='none'"><img style="width:80px;height:56px" src="public/crea1.png"></label><br>
+
+   <input type="radio" id="demoButton2" name="optionCrea" value="2" >
+   <label for="demoButton2" id="labelDemoButton2" onclick="setSpecies(1);document.getElementById('getStarted1').style.display='none';document.getElementById('getStarted2').style.display='block';document.getElementById('getStarted3').style.display='none'"><img style="width:80px;height:56px" src="public/crea2.png"></label><br>
+
+
+   <input type="radio" id="demoButton4" name="optionCrea" value="4">
+   <label for="demoButton4" id="labelDemoButton4" onclick="setSpecies(3);document.getElementById('getStarted1').style.display='none';document.getElementById('getStarted2').style.display='none';document.getElementById('getStarted3').style.display='block'"><img style="width:80px;height:56px" src="public/crea4.png"></label>
+
+</div>
+<div class='l-body'>
+  <canvas id="glCanvas" width="640" height="360" style="background-color:#000000;"></canvas>
+  <!--shadertoy at mac 840x472, at win 640x360-->
+  <div id="showText" onclick="this.style.display='none';">initializing...</div>
+</div>
+ <div>
+ <span id="play-pause">
+                <svg class="icon" id="play" style="display: inline;"><svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></svg>
+                <svg class="icon" id="pause" style="display: none;"> <svg id="pauseIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg> </svg>
+            </span>
+<svg class="icon" id="reset" style="display:none"><svg id="resetIcon" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"></path></svg></svg>
+<input type="file" id="imageLoader" style="display:none" name="imageLoader"/>
+ 
+<div class="radio-toolbar" id="radioStart" >
+ <input type="radio" id="startButton1" name="optionStart" value="1" checked>
+ <label for="startButton1" id="labelStartButton1" onclick="document.getElementById('infoDemo').style.display='block';document.getElementById('infoDemoAdvanced').style.display='none';document.getElementById('getStarted').style.display='block';document.getElementById('controls').style.display='none'">Getting started</label>
+
+ <input type="radio" id="startButton2" name="optionStart" value="2" >
+ <label for="startButton2" id="labelStartButton2" onclick="document.getElementById('infoDemo').style.display='none';document.getElementById('infoDemoAdvanced').style.display='block';document.getElementById('getStarted').style.display='none';document.getElementById('controls').style.display='block'">Advanced options</label>
+</div>
+</div>
+
+ 
+
+  <div id="getStarted" class="l-body" style="display:block">
+
+    <div  id="getStarted1" style="display:block">
+      <div class="row" >
+        <div id="zoomCrea1" class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1; " onclick="img.src='public/zoomCrea1.png'">
+          <img style="width:100%" src="public/zoomCrea1.png">
+          <p class="titleGetStarted"> Zoomed in </p>
+        </div>
+        <div  id="multi1"class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/init1.png'">
+          <img style="width:100%" src="public/init1.png">
+          <p class="titleGetStarted"> Multi creature</p>
+        </div>
+        <div id="mazeCrea1" class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/mazeCrea1.png'">
+          <img style="width:100%" src="public/mazeCrea1.png">
+          <p style="margin-top:0px;margin-bottom:0px;text-align:center"> Maze </p>
+        </div>
+      </div>
+    </div>
+
+    <div  id="getStarted2" style="display:none">
+      <div class="row" >
+        <div id="zoomCrea2" class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/zoomCrea2.png'">
+          <img style="width:100%" src="public/zoomCrea2.png">
+          <p class="titleGetStarted"> Zoomed in</p>
+        </div>
+        <div  id="multi2"class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/init2.png'">
+          <img style="width:100%" src="public/init2.png">
+          <p class="titleGetStarted"> Multi creature</p>
+        </div>
+        <div id="mazeCrea2" class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/mazeCrea2.png'">
+          <img style="width:100%" src="public/mazeCrea2.png">
+          <p class="titleGetStarted"> Maze </p>
+        </div>
+      </div>
+    </div>
+
+    <div  id="getStarted3" style="display:none">
+      <div class="row" >
+        <div id="zoomCrea3" class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1; " onclick="img.src='public/zoomCrea3.png'">
+          <img style="width:100%" src="public/zoomCrea3.png">
+          <p class="titleGetStarted"> Zoomed in</p>
+        </div>
+        <div  id="multi3"class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/init3.png'">
+          <img style="width:100%" src="public/init3.png">
+          <p class="titleGetStarted"> Multi creature</p>
+        </div>
+        <div id="mazeCrea3"class="column" style="background-color: rgba(0,0,0,0.1);border: solid rgba(0, 0, 0, .2);flex:1;" onclick="img.src='public/mazeCrea3.png'">
+          <img style="width:100%" src="public/mazeCrea3.png">
+          <p style="margin-top:0px;margin-bottom:0px;text-align:center"> Maze </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="controls" class="l-body" style="display:none">
+  <div class='row'>
+    <div class="column">
+      <input type="range" min="0.1" max="1"  step="0.1" value="0.5" class="slider" id="rangeRadiusWall" >
+      <p> Brush size: <span id="valueRadiusWall"></span></p>
+      <input type="range" min="6" max="20"  step="0.1" value="8.5" class="slider" id="rangeRadius" style="display:none">
+      <p style="display:none"> Radius of kernels (size of creature): <span id="valueRadius"></span></p>
+    </div>
+    <div class="column">
+      <input type="range" min="2" max="8"  step="1" value="2" class="slider" id="rangeZoom" >
+      <p> Zoom : <span id="valueZoom"></span></p>
+    </div>
+  </div>
+
+
+  <div class="radio-toolbar" id="optionDiv">
+    <input type="radio" id="radioErase"  name='option'  value="erase">
+    <label for="radioErase">Eraser</label>
+
+    <input type="radio" id="radioCircle"  name='option'  value="circle" checked>
+    <label for="radioCircle">Wall Dot</label>
+
+    <input type="radio" id="radioCreature" name='option'  value="creature" >
+    <label for="radioCreature">Creature</label>
+
+    <input type="radio" id="radioZoom" name='option'  value="zoom" >
+    <label for="radioZoom">Zoom</label>
+
+    <input type="radio" id="radioAttract" name='option'  value="attract" >
+    <label for="radioAttract">Attractor</label>
+</div>
+</div>
+
+  <script type="text/javascript" src="public/utils.js"></script>
+  <script type="text/javascript" src="public/gl.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id='Videos'>Videos</h2>
+
+
+
+       
+<div class="l-page">
+ <div class="row">
+   
+    <div class="column">
+      <video id="robust" width="95%" controls  autoplay loop muted="" class="videoShow">
+                    <source src="public/resultObstacle.mp4" type="video/mp4">
+                  </video>
+    </div>
+<div class="column">
+      <video id="robust" width="95%" controls  autoplay loop muted="" class="videoShow">
+                    <source src="public/resultObstacle8.mp4" type="video/mp4">
+                  </video>
+    </div>
+<div class="column">
+      <video id="robust" width="95%" controls autoplay loop muted="" class="videoShow">
+                    <source src="public/resultObstacle9.mp4" type="video/mp4">
+                  </video>
+    </div>
+<div class="column">
+      <video id="robust" width="95%" controls  autoplay loop muted="" class="videoShow">
+                    <source src="public/robust2.mp4" type="video/mp4">
+                  </video>
+    </div>
+    
+   
+ </div>
+ <p  style="font-size: 19px;color:#000000;text-align:center;" >
+Video S1: Sensorimotor agents<br>
+ <span style="font-size: 14px;color:#A0A0A0;">
+Different agent obtained by the IMGEP, with sensorimotor capabilities (reacting to perturbations by the obstacles). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the difference in activity in the agent.
+ </span>
+ </p>
+</div>
+      
+    
+    
+      
+      
+      
+<div class="l-middle">
+<video id="robust" width="95%"  controls muted="" class="videoShow">
+                <source src="public/random.mp4" type="video/mp4">
+              </video>
+<p  style="font-size: 19px;color:#000000;text-align:center;" >
+Video S2: Random search<br>
+ <span style="font-size: 14px;color:#A0A0A0;">
+Each 100 squares are random parameters trials (each  1 channel and  10 rules so \(\sim \)  130 parameters for all the rules of a square). The parameters 
+control the local rules of interaction between cells, by changing the kernel shape (how a cell senses) and the growth function (how this sensing 
+is converted into growth). </span>
+ </p>
+ 
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<div class="row l-page">
+  <div class="column">
+    <video id="robust" width="99%" controls loop muted="" class="videoShow">
+                  <source src="public/orbiumSolo.mp4" type="video/mp4">
+                </video>
+  </div>
+  <div class="column">
+    <video id="robust" width="99%" controls loop muted="" class="videoShow">
+                  <source src="public/orbiumCollision.mp4" type="video/mp4">
+                </video>
+  </div>
+  <div class="column">
+    <video id="robust" width="99%" controls loop muted="" class="videoShow">
+                  <source src="public/orbiumCollision2.mp4" type="video/mp4">
+                </video>
+  </div>
+</div>
+
+<p  style="font-size: 19px;color:#000000;text-align:center;" >
+Video S3<br>
+<span style="font-size: 14px;color:#A0A0A0;">
+Caption
+</span>
+</p> 
+      
+
+       
+       
+
+
+
+
+ <div class="l-page">
+<div id="orbicol">
+<div class="row">
+    <div class="column">
+      <video id="robust" width="95%" controls loop muted="" class="videoShow">
+                    <source src="public/orbium.mp4" type="video/mp4">
+                  </video>
+    </div>
+    <div class="column">
+      <video id="robust" width="95%" controls  loop muted="" class="videoShow">
+                    <source src="public/orbiumWallb.mp4" type="video/mp4">
+                  </video>
+    </div>
+    
+  </div>
+  <p  style="font-size: 19px;color:#000000;text-align:center;" >
+    Video S4<br>
+    <span style="font-size: 14px;color:#A0A0A0;">
+      Orbium (glider like in Lenia obtained by hand made mutation) dies from perturbation by obstacles
+    </span>
+    </p> 
+</div>
+</div>
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+    
+
+
+
+
+
+
+
+
+
+ <h3 id='Videos'>Generalization</h3>
+
+ <h4> Quantitative</h4>
+ <div class="l-screen-inset">
+	 <div class="row ">
+    <div class="column">
+    <p style="font-size: 12px;color:#000000;text-align:center;">Seed 9 IMGEP step 142</p>
+     </div>
+	       <div class="column">
+		 <video id="kernels" width="100%" controls loop muted="" class="videoShow" >
+		               <source src="public/generalization_seed9_142/seed9_crea00142_obstacle_number_var_30.00.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.1<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+	       </div>
+	       <div class="column">
+		 <video id="robust" width="100%" controls  loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_obstacle_radius_var_7.00.mp4" type="video/mp4">
+		             </video>
+
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.2<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+	       </div>
+	      
+	       <div class="column">
+		  <video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_obstacle_speed_var_3.00.mp4" type="video/mp4">
+		             </video>
+
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.3<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+	       </div>
+
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_update_mask_rate_var_0.20.mp4" type="video/mp4">
+		             </video>
+
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.4<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_update_noise_rate_var_0.80.mp4" type="video/mp4">
+		             </video>
+
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.5<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_update_noise_std_var_0.60.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.6<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+	       </div>
+	       
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_init_noise_rate_var_1.00.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.7<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_init_noise_std_var_4.50.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.8<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed9_142/seed9_crea00142_scaling_var_2.15.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.9<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+
+
+	      </div>
+	      
+	      
+	      
+	       <div class="row ">
+
+          <div class="column">
+            <p style="font-size: 12px;color:#000000;text-align:center;">Seed 5 IMGEP step 120</p>
+             </div>
+	       <div class="column">
+		 <video id="kernels" width="100%" controls="" loop muted="" class="videoShow" >
+		               <source src="public/generalization_seed5_120/seed5_crea00120_obstacle_number_var_30.00.mp4" type="video/mp4">
+		             </video>
+
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.11<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+	       </div>
+	       <div class="column">
+		 <video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_obstacle_radius_var_7.00.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.12<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+	       </div>
+	      
+	       <div class="column">
+		  <video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_obstacle_speed_var_3.00.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.13<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+	       </div>
+
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_update_mask_rate_var_0.20.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.14<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_update_noise_rate_var_0.80.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.15<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_update_noise_std_var_0.60.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.16<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_init_noise_rate_var_1.00.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.17<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_init_noise_std_var_4.50.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.18<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+	       <div class="column">
+	<video id="robust" width="100%" controls loop muted="" class="videoShow">
+		               <source src="public/generalization_seed5_120/seed5_crea00120_scaling_var_2.15.mp4" type="video/mp4">
+		             </video>
+                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S5.19<br>
+                   <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                   </span>
+                   </p>
+
+
+	       </div>
+
+
+	      </div>
+</div>
+      
+      
+      
+ 
+ 
+ <h4> Qualitative </h4>
+ 
+ 
+ <div class="l-screen-inset">
+  <div class="row ">
+
+
+
+    <div class="column">
+      <video id="robust" width="95%"   controls="" loop muted="" class=" videoShow">
+       <source src="public/custom_obstacles.mp4" type="video/mp4">
+     </video>
+     <p  style="font-size: 12px;color:#000000;text-align:center;" >
+       Video S6<br>
+        <span style="font-size: 10px;color:#A0A0A0;">
+       caption
+        </span>
+        </p>
+</div>
+
+<div class="column">  
+     
+<video id="robust" width="95%"   controls="" loop muted="" class="videoShow">
+             <source src="public/solveMaze.mp4" type="video/mp4">
+           </video>
+           <p  style="font-size: 12px;color:#000000;text-align:center;" >
+             Video S7<br>
+             <span style="font-size: 10px;color:#A0A0A0;">
+             caption
+             </span>
+             </p>
+</div> 
+   <div class="column">
+
+    <video id="model-editing-level-1-video-1" width="95%" controls loop muted="" class="videoShow ">
+                  <source src="public/harderEnv.mp4" type="video/mp4">
+                </video>
+                <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S8<br>
+                  <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                  </span>
+                  </p>
+    </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="l-screen">
+    <div class="row">
+    
+      <div class="column">
+        <video id="robust" width="95%"   controls="" loop muted="" class="videoShow">
+                    <source src="public/demo.mp4" type="video/mp4">
+                  </video>
+                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S9<br>
+                  <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                  </span>
+                  </p>
+                </div>
+                
+    
+    
+      <div class="column">
+        <video id="robust" width="95%"   controls="" loop muted="" class="videoShow">
+                    <source src="public/repro.mp4" type="video/mp4">
+                  </video>
+                
+                <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                  Video S10<br>
+                  <span style="font-size: 10px;color:#A0A0A0;">
+                  caption
+                  </span>
+                  </p>
+                </div>
+    
+                  <div class="column">
+                    <video id="robust" width="95%" controls="" loop muted="" class="videoShow">
+                                  <source src="public/stick.mp4" type="video/mp4">
+                                </video>
+                                <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                                  Video S11<br>
+                                  <span style="font-size: 10px;color:#A0A0A0;">
+                                  caption
+                                  </span>
+                                  </p>
+                                 
+                              
+                    <!--
+                    <video id="robust" width="95%"  controls  loop muted="" class="videoShow">
+                                  <source src="public/stickFar.mp4" type="video/mp4">
+                                </video>
+                      <p style="font-size: 13px;color:#A0A0A0;  ">
+                        If they are too far from each other no attraction.
+                      </p>
+                    </div>-->
+                    </div>
+    </div>
+    </div>
+
+
+  <div class="l-screen">
+    <div class="row ">
+
+ 
+      <div class="column">
+  <video id="model-editing-level-1-video-1" width="95%" controls="" loop muted="" class="videoShow">
+                <source src="public/asynchro.mp4" type="video/mp4">
+              </video>
+              <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                Video S12<br>
+                <span style="font-size: 10px;color:#A0A0A0;">
+                caption
+                </span>
+                </p>
+    </div>
+ 
+              <div class="column">
+<video id="model-editing-level-1-video-1" width="95%"  controls="" loop muted="" class="videoShow">
+              <source src="public/smallerDie.mp4" type="video/mp4">
+            </video>
+            <p  style="font-size: 12px;color:#000000;text-align:center;" >
+              Video S13<br>
+              <span style="font-size: 10px;color:#A0A0A0;">
+              caption (kernel radius*0.4)
+              </span>
+              </p>
+
+      </div>
+
+ 
+
+      <div class="column">
+
+ 
+
+
+</div>
+</div>
+
+ 
+
+
+ 
+
+<div class="l-screen">
+  <div class="row ">
+        <video id="robust" width="95%"  controls="" loop muted="" class="videoShow">
+          <source src="public/damageHand.mp4" type="video/mp4">
+        </video>
+        <p  style="font-size: 12px;color:#000000;text-align:center;" >
+        Video S14<br>
+        <span style="font-size: 10px;color:#A0A0A0;">
+        caption
+        </span>
+        </p>
+        
+        </div>
+
+                  <div class="column">
+            <video id="robust" width="95%" controls loop muted="" class="videoShow">
+                          <source src="public/attractLive.mp4" type="video/mp4">
+                        </video>
+                        <p  style="font-size: 12px;color:#000000;text-align:center;" >
+                          Video S15<br>
+                          <span style="font-size: 10px;color:#A0A0A0;">
+                          caption
+                          </span>
+                          </p>
+                         
+                      </div>
+
+                      
+ 
+                </div>
+              </div>
+
+
+
+ 
+
+
+
+     
+
+ 
+ <div class="l-page">
+ <div class="row">
+   
+    <div class="column" >
+ <video id="model-editing-level-1-video-1" width="95%"   controls="" muted="" class="videoShow ">
+              <source src="public/initCircleGrad.mp4" type="video/mp4">
+            </video>
+     </div>
+     
+     <div class="column">
+<video id="model-editing-level-1-video-1"  width="95%" controls="" muted="" class="videoShow ">
+              <source src="public/initCircle.mp4" type="video/mp4">
+            </video>
+     </div>
+    <div class="column">
+  <video id="model-editing-level-1-video-1" width="95%"  controls="" muted="" class="videoShow ">
+                <source src="public/initDie.mp4" type="video/mp4">
+              </video>
+     </div>
+   </div>
+   
+   <p  style="font-size: 19px;color:#000000;text-align:center;" >
+Video S16: Robustness to initialization<br>
+ <span style="font-size: 14px;color:#A0A0A0;">
+Caption
+ </span>
+ </p>
+   
+   
+   </div>
+
+
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+<h3> additional </h3>
+
+
+
+
+<div class="l-page">
+ <div class="row">
+   
+    <div class="column">
+      <video id="robust" width="95%" controls  loop muted="" class="videoShow">
+                    <source src="public/no_moving_seed0_crea00147.mp4" type="video/mp4">
+                  </video>
+    </div>
+<div class="column">
+      <video id="robust" width="95%" controls loop muted="" class="videoShow">
+                    <source src="public/no_moving_seed1_crea00101.mp4" type="video/mp4">
+                  </video>
+    </div>
+   
+ </div>
+ <p  style="font-size: 19px;color:#000000;text-align:center;" >
+Video S7: Agent considered non moving by our test<br>
+ <span style="font-size: 14px;color:#A0A0A0;">
+Caption
+ </span>
+ </p>
+</div>
+
+
+
+ 
+
+
+
+
+
+
+<div class="l-screen-inset l-screen-inset-bigger">
+<div class='row'>
+ <div class="column">
+      <video id="robust" width="95%"  loop controls  muted="" class="videoShow">
+                    <source src="public/innerOuter.mp4" type="video/mp4">
+                  </video>
+<p  style="font-size: 14px;color:#A0A0A0;text-align:center;" >
+Run 1
+ </p>
+    </div>
+    <div class="column">
+      <video id="robust" width="95%" controls loop   muted="" class="videoShow">
+                    <source src="public/innerOuter7.mp4" type="video/mp4">
+                  </video>
+<p  style="font-size: 14px;color:#A0A0A0;text-align:center;" >
+Run 2
+ </p>
+</div>
+</div>
+</div>
+<p  style="font-size: 19px;color:#000000;text-align:center;" class="l-screen-inset">
+Results of successive outer (top) and inner (bottom) optimization steps in practice in 2 different runs <br>
+ <span style="font-size: 14px;color:#A0A0A0;"> 
+This figure shows how the bi-level optimization (an inner loop inside of an outer loop) progressively evolves moving creatures. For each run, the upper-left video corresponds to the creature obtained after initialization of the parameters (before optimization), which is not able to move at all. After several outer steps (shown at the top and separated by blue lines), we can see how the evolved creatures improve their behavior, with the upper-right one (at the end of the bi-level optimization) reaching quickly the edge of the grid. At the bottom, a "zoom" (represented by the red lines) 
+ on the first outer step (between first and second top videos)
+shows in more details the successive small improvements made by the inner loop
+ (gradient steps)  during first outer step. Each inner step slightly  improves the creature by making it go a little further. At the end of 
+these inner steps, we get the result of the first outer step (second top video).
+</span>
+ </p><br>
+</div>
+
+
+
+
+
+
+ 
+
+<div class="row l-screen-inset">
+   
+    <div class="column" style="
+    /* width: auto; */
+    width: 70%;
+">
+      <video id="robust" controls=""  loop="" muted="" class="videoShow" style="
+    width: 95%;
+">
+                    <source src="public/moveBar.mp4" type="video/mp4">
+                  </video>
+    </div>
+<div class="column" style="
+    width: 35%;
+">
+      <video id="robust" controls=""  loop="" muted="" class="videoShow" style="
+    width: 95%;
+">
+                    <source src="public/moveBarDie.mp4" type="video/mp4">
+                  </video>
+    </div>
+  </div>
+
+
+<p  style="font-size: 19px;color:#000000;text-align:center;" class="l-middle-outset">
+    Robustness of learned moving creatures over longer time spans than in the training process.<br>
+ <span style="font-size: 14px;color:#A0A0A0;"> Each square is the result of 1 trial of the method. The video on the left displays successes of the method 
+where the creatures obtained are long term stable. The video on the right displays trials where the creatures obtained die few steps after the
+ number of timesteps it has been trained on. The last creature on the right 
+ tries as much as possible to fit the target at last seen timestep resulting in a death right after. </span>
+ </p><br>
+ 
+
+
+
+<div id="gradientWall">
+<div class="row">
+    <div class="column">
+      <video id="robust" width="95%" autoplay loop muted="" class="videoShow">
+                    <source src="public/move7Wall.mp4" type="video/mp4">
+                  </video>
+    </div>
+    <div class="column">
+      <video id="robust" width="95%"  autoplay loop muted="" class="videoShow">
+                    <source src="public/move6Wall.mp4" type="video/mp4">
+                  </video>
+    </div>
+ 
+  </div>
+<p  style="font-size: 14px;color:#A0A0A0;text-align:center;">
+
+c) Unofficial IMGEP no obstacle (i can test the "true" ones)
+</p>  
+
+<div class="row" id="resistColliDie">
+    <div class="column">
+      <video id="robust" width="95%" autoplay loop muted="" class="videoShow">
+                    <source src="public/move9wall.mp4" type="video/mp4">
+                  </video>
+    </div>
+    <div class="column">
+      <video id="robust" width="95%"  autoplay loop muted="" class="videoShow">
+                    <source src="public/move9dot.mp4" type="video/mp4">
+                  </video>
+    </div>
+
+</div>
+<p  style="font-size: 14px;color:#A0A0A0;text-align:center;">
+
+d) Some creatures obtained in unofficial IMGEP no obstacle resist some collisions (left) but often die from other collisions (right). The 
+creature is the same in both videos. (use true one)
+</p>  
+</div>
+</div>
+
+
+<video id="robust" width="100%" controls="" autoplay loop muted="" class="videoShow">
+              <source src="public/unstable.mp4" type="video/mp4">
+            </video>
+
+<div class="row l-page">
+       <div class="column">
+         <video id="kernels" width="100%" autoplay loop muted="" class="videoShow" >
+                       <source src="public/slalom.mp4" type="video/mp4">
+                     </video>
+       </div>
+       <div class="column">
+         <video id="robust" width="100%" autoplay loop muted="" class="videoShow">
+                       <source src="public/newONE.mp4" type="video/mp4">
+                     </video>
+       </div>
+      
+       <div class="column">
+          <video id="robust" width="100%" autoplay loop muted="" class="videoShow">
+                       <source src="public/ball.mp4" type="video/mp4">
+                     </video>
+
+       </div>
+
+       <div class="column">
+<video id="robust" width="100%" autoplay loop muted="" class="videoShow">
+                       <source src="public/squid.mp4" type="video/mp4">
+                     </video>
+
+
+       </div>
+
+
+      </div>
+
+
+ <video id="kernelsVis" width=85% controls="" muted="" class="videoShow" >
+                    <source src="public/kernels.mp4" type="video/mp4">
+                  </video>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</dt-article>
+
+
+<script type="text/javascript">
+"use strict";
+function changeImgIMGEP(img)
+{
+    var schemeIMGEP=document.getElementById("schemeIMGEP");
+    schemeIMGEP.src=img;
+}
+function changeVideo(className,nb)
+   {
+ 	var vids=document.getElementsByClassName(className);
+	for(var i=0;i<vids.length;i++){
+       vids[i].style.display="none";
+}
+console.log(className+nb);
+var vid=document.getElementById(className+nb);
+console.log(vid);
+vid.style.display="block";
+vid.currentTime = '0';
+
+ }
+
+</script>
+<style>
+button {
+display: inline-block;
+background-color: #7b38d8;
+border-radius: 10px;
+border: 4px double #cccccc;
+color: #eeeeee;
+text-align: center;
+font-size: 15px;
+padding: 10px;
+width: 80px;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+}
+button:hover {
+background-color: lightgreen;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.titleGetStarted{
+margin-top:0px;
+margin-bottom:0px;
+text-align:center;
+}
+
+.radio-toolbar label {
+    display: inline-block;
+    background-color: #cbc;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 80px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+    background-color:green;
+    border-color: #4c4;
+}
+
+.radio-toolbar input[type="radio"]:focus + label {
+    border: 2px dashed #444;
+}
+
+.radio-toolbar label:hover {
+  background-color: lightgreen;
+}
+
+.figcaption{
+  font-size: 22px;
+  color:#A0A0A0;
+}
+
+d-content li{
+  font-size: 14px;
+  color:#A0A0A0;
+}
+
+d-content {
+    clear: both;
+    float: right;
+    line-height:1.4;
+    padding-top: 1em;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+    margin-left: 10px;
+    margin-right: calc((100vw - 1500px) / 2 + 168px);
+    width: calc((1500px - 648px) / 2 - 24px);
+}
+
+d-content h5{
+  margin-block-start: 1.5em;
+  margin-block-end: 0em;
+}
+
+d-content ul{
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+d-content h2{
+  margin-top:10px;
+}
+@media (max-width: 1300px)
+d-content {
+    display: none;
+}
+.icon {
+    width: 30px;
+    height: 30px;
+    background: steelblue;
+    fill: white;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 2px;
+    cursor: pointer;
+}
+def{
+clear: both;
+float: left;
+margin-top: 0;
+margin-left: 24px;
+width: calc(50% - 1384px / 2);
+padding: 0 0 0 24px;
+border-radius: 20px 20px 20px 20px;
+background-color: rgba(0,0,0,0.05);
+color: rgba(0,0,0,0.5);
+font-size:14px;
+}
+
+
+
+
+
+</style>
