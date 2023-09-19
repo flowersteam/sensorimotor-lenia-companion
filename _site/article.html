@@ -26,7 +26,8 @@
       <li>You can erase by selecting the <b>Eraser</b> mode and then clicking or dragging on the screen  </li>
       <li> You can choose the brush size to draw bigger obstacles/ clear bigger areas etc</li>
       <li> To zoom, select zoom mode, select zoom magnitude with the slider and then click where you want to zoom<br>Keep dragging to follow the creature </li>
-<li> For the attractor, click and drag for a short distance attractor (Still experimental, works best with creature 2) </li>       
+<li> For the attractor, click and drag for a short distance attractor (Still experimental, works best with creature 2) </li>    
+<li> You can upload images through browse, We advise you to use small images (as big ones will make large grid that are computationally heavy)</li>   
  
   </nav>
 <nav id="infoDemo" style="margin-left:2em;display:block">
@@ -62,7 +63,6 @@
                 <svg class="icon" id="pause" style="display: none;"> <svg id="pauseIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg> </svg>
             </span>
 <svg class="icon" id="reset" style="display:none"><svg id="resetIcon" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"></path></svg></svg>
-<input type="file" id="imageLoader" style="display:none" name="imageLoader"/>
  
 <div class="radio-toolbar" id="radioStart" >
  <input type="radio" id="startButton1" name="optionStart" value="1" checked>
@@ -140,6 +140,9 @@
     <div class="column">
       <input type="range" min="2" max="8"  step="1" value="2" class="slider" id="rangeZoom" >
       <p> Zoom : <span id="valueZoom"></span></p>
+    </div>
+    <div class="column">
+      <input type="file" id="imageLoader" style="" name="imageLoader"/>
     </div>
   </div>
 
@@ -236,7 +239,7 @@ Different agent obtained by the IMGEP, with sensorimotor capabilities (reacting 
 <video id="robust" width="95%"  controls muted="" class="videoShow">
                 <source src="public/random.mp4" type="video/mp4">
               </video>
-<p  style="font-size: 19px;color:#000000;text-align:center;" >
+<p  id="random_trials" style="font-size: 19px;color:#000000;text-align:center;" >
 Video S2: Random search<br>
  <span style="font-size: 14px;color:#A0A0A0;">
 Each 100 squares are random parameters trials (each  1 channel and  10 rules so \(\sim \)  130 parameters for all the rules of a square). The parameters 
@@ -273,7 +276,7 @@ is converted into growth). </span>
   </div>
 </div>
 
-<p  style="font-size: 19px;color:#000000;text-align:center;" >
+<p  id="orbium_collision" style="font-size: 19px;color:#000000;text-align:center;" >
 Video S3<br>
 <span style="font-size: 14px;color:#A0A0A0;">
 Caption
