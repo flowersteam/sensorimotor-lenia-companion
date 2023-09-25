@@ -258,7 +258,7 @@ is converted into growth). </span>
  
  
  
-<div class="row l-page">
+<div class="container_row l-screen-inset">
   <div class="column">
     <video id="robust" width="99%" controls loop muted="" class="videoShow">
                   <source src="public/orbiumSolo.mp4" type="video/mp4">
@@ -290,9 +290,10 @@ Caption
 
 
 
- <div class="l-page">
+ <div class="l-screen-inset">
 <div id="orbicol">
-<div class="row">
+<div class="container_row">
+  <div class="column"></div>
     <div class="column">
       <video id="robust" width="95%" controls loop muted="" class="videoShow">
                     <source src="public/orbium.mp4" type="video/mp4">
@@ -303,8 +304,9 @@ Caption
                     <source src="public/orbiumWallb.mp4" type="video/mp4">
                   </video>
     </div>
-    
+    <div class="column"></div>
   </div>
+  
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
     Video S4<br>
     <span style="font-size: 14px;color:#A0A0A0;">
@@ -348,7 +350,7 @@ Caption
  <h3 id='Videos'>Generalization</h3>
 
  <h4> Quantitative</h4>
- <div class="l-screen-inset">
+ <div class="l-screen">
 	 <div class="row ">
     <div class="column">
     <p style="font-size: 12px;color:#000000;text-align:center;">Seed 9 IMGEP step 142</p>
@@ -610,8 +612,8 @@ Caption
  <h4> Qualitative </h4>
  
  
- <div class="l-screen-inset">
-  <div class="row ">
+ <div class="l-screen">
+  <div class="container_row">
 
 
 
@@ -658,7 +660,7 @@ Caption
 
 
   <div class="l-screen">
-    <div class="row">
+    <div class="container_row">
     
       <div class="column">
         <video id="individuality" width="95%"   controls="" loop muted="" class="videoShow">
@@ -713,7 +715,7 @@ Caption
 
 
   <div class="l-screen">
-    <div class="row ">
+    <div class="container_row ">
 
  
       <div class="column">
@@ -741,9 +743,22 @@ Caption
 
       </div>
 
+      <div class="column">
+        <video id="damage_hand" width="95%"  controls="" loop muted="" class="videoShow">
+          <source src="public/damageHand.mp4" type="video/mp4">
+        </video>
+        <p  style="font-size: 12px;color:#000000;text-align:center;" >
+        Video S14<br>
+        <span style="font-size: 10px;color:#A0A0A0;">
+        caption
+        </span>
+        </p>
+        
+        </div>
+
  
 
-      <div class="column">
+ 
 
  
 
@@ -757,18 +772,10 @@ Caption
  
 
 <div class="l-screen">
-  <div class="row ">
-        <video id="damage_hand" width="95%"  controls="" loop muted="" class="videoShow">
-          <source src="public/damageHand.mp4" type="video/mp4">
-        </video>
-        <p  style="font-size: 12px;color:#000000;text-align:center;" >
-        Video S14<br>
-        <span style="font-size: 10px;color:#A0A0A0;">
-        caption
-        </span>
-        </p>
-        
-        </div>
+  <div class="container_row">
+    
+          <div class="column"></div>
+
 
                   <div class="column">
             <video id="attraction_external" width="95%" controls loop muted="" class="videoShow">
@@ -783,9 +790,13 @@ Caption
                          
                       </div>
 
-                      
+                      <div class="column"></div>
  
                 </div>
+
+
+
+
               </div>
 
 
@@ -1203,6 +1214,12 @@ border-radius: 20px 20px 20px 20px;
 background-color: rgba(0,0,0,0.05);
 color: rgba(0,0,0,0.5);
 font-size:14px;
+}
+
+.container_row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 5px;
 }
 
 
