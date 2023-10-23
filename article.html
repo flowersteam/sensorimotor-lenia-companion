@@ -225,7 +225,7 @@
  <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S1: Sensorimotor agents<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Different agent obtained by the IMGEP, with sensorimotor capabilities (reacting to perturbations by the obstacles). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the difference in activity in the agent.
+Different agent (in yellow) obtained by the IMGEP, with sensorimotor capabilities (reacting to perturbations by the obstacles (blue)). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the difference in activity in the agent.
  </span>
  </p>
 </div>
@@ -245,10 +245,9 @@ Video S2: Random search<br>
  <span style="font-size: 14px;color:#A0A0A0;">
 Each 100 squares are random parameters trials (each  1 channel and  10 rules so \(\sim \)  130 parameters for all the rules of a square). The parameters 
 control the local rules of interaction between cells, by changing the kernel shape (how a cell senses) and the growth function (how this sensing 
-is converted into growth). </span>
+is converted into growth). We observe that a lot of random search trials lead to death or explosion of the mass. Very little lead to stable spatially localized pattern and even less to moving ones. </span>
  </p>
  
-</div>
  
  
  
@@ -278,9 +277,10 @@ is converted into growth). </span>
 </div>
 
 <p   style="font-size: 19px;color:#000000;text-align:center;" >
-Video S3<br>
+Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturbations<br>
 <span style="font-size: 14px;color:#A0A0A0;">
-Caption
+  Left: orbium, equivalent of the glider in Lenia (from the original lenia paper) an example of moving agent. Middle and right videos: collision between several orbium leading to death/explosion. This shows the fragility of the orbium to 
+  external perturbations.  
 </span>
 </p> 
       
@@ -309,9 +309,9 @@ Caption
   </div>
   
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
-    Video S4<br>
+    Video S4: Orbium perturbed by obstacles. <br>
     <span style="font-size: 14px;color:#A0A0A0;">
-      Orbium (glider like in Lenia obtained by hand made mutation) dies from perturbation by obstacles
+      Orbium, equivalent of the glider in Lenia (from the original lenia paper), dies from perturbations by obstacles.
     </span>
     </p> 
 </div>
@@ -319,7 +319,7 @@ Caption
 
 
 
-<div class="l-screen">
+<div class="l-screen-inset">
   <div class="row">
     
      <div class="column">
@@ -347,48 +347,15 @@ Caption
     
   </div>
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
- Video X: Agents obtained by each method<br>
+ Video SX: Agents obtained by each method<br>
   <span style="font-size: 14px;color:#A0A0A0;">
- Agents obtained by random search,IMGEP, handmade search (from Lenia original papers). A lot of IMGEP obtained agents are moving agents with high speed.
+ 100 Patterns passing our agency tests obtained by random search,IMGEP, handmade search (from Lenia original papers). A lot of IMGEP obtained agents are moving agents with high speed.
   </span>
   </p>
  </div>
 
 
- <div class="l-screen">
-  <div class="row">
-    
-     <div class="column">
-       <video id="robust" width="95%" controls  loop muted="" class="videoShow">
-                     <source src="public/random_movobsb.mp4" type="video/mp4">
-                   </video>
-        <p style="text-align:center;"> Random search</p>
-     </div>
- <div class="column">
-       <video id="sensorimotor_agents" width="95%" controls loop muted="" class="videoShow">
-                     <source src="public/imgep_movobsb.mp4" type="video/mp4">
-                   </video>
-                   <p style="text-align:center;"> IMGEP search </p>
-     </div>
-     
- <div class="column">
-       <video id="robust" width="95%" controls loop muted="" class="videoShow">
-                     <source src="public/handmade_movobsb.mp4" type="video/mp4">
-                   </video>
-                   <p style="text-align:center;"> Handmade search </p>
-     </div>
-     
-
-     
-    
-  </div>
-  <p  style="font-size: 19px;color:#000000;text-align:center;" >
- Video X: Moving obstacle test on agents obtained by each method<br>
-  <span style="font-size: 14px;color:#A0A0A0;">
- Agents obtained by random search,IMGEP, handmade search (from Lenia original papers). A lot of IMGEP obtained agents are moving agents with high speed.
-  </span>
-  </p>
- </div>
+ 
 
 
 
@@ -424,8 +391,47 @@ Caption
 
  <h3 id='Videos'>Generalization</h3>
 
+
+
+ <div class="l-screen-inset">
+  <div class="row">
+    
+     <div class="column">
+       <video id="robust" width="95%" controls  loop muted="" class="videoShow">
+                     <source src="public/random_movobsb.mp4" type="video/mp4">
+                   </video>
+        <p style="text-align:center;"> Random search</p>
+     </div>
+ <div class="column">
+       <video id="sensorimotor_agents" width="95%" controls loop muted="" class="videoShow">
+                     <source src="public/imgep_movobsb.mp4" type="video/mp4">
+                   </video>
+                   <p style="text-align:center;"> IMGEP search </p>
+     </div>
+     
+ <div class="column">
+       <video id="robust" width="95%" controls loop muted="" class="videoShow">
+                     <source src="public/handmade_movobsb.mp4" type="video/mp4">
+                   </video>
+                   <p style="text-align:center;"> Handmade search </p>
+     </div>
+     
+
+     
+    
+  </div>
+  <p  style="font-size: 19px;color:#000000;text-align:center;" >
+ Video SX: Moving obstacle test on agents obtained by each method<br>
+  <span style="font-size: 14px;color:#A0A0A0;">
+ 100 Agents obtained by random search,IMGEP, handmade search (from Lenia original papers). We observe that the proportion of agents with robustness to moving obstacles is much higher in the agents obtained by IMGEP than the ones obtained
+ by random search and handmade search. 
+  </span>
+  </p>
+ </div>
+
+
  <h4> Quantitative</h4>
- <div class="l-screen">
+ <div class="l-screen-inset">
 	 <div class="row ">
     <div class="column">
     <p style="font-size: 12px;color:#000000;text-align:center;">Seed 9 IMGEP step 142</p>
@@ -437,7 +443,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.1<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Obstacle number : 30
                    </span>
                    </p>
 	       </div>
@@ -449,7 +455,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.2<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Obstacle radius 7
                    </span>
                    </p>
 	       </div>
@@ -462,7 +468,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.3<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Obstacle speed 3
                    </span>
                    </p>
 
@@ -476,7 +482,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.4<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Update mask rate 0.2
                    </span>
                    </p>
 
@@ -490,7 +496,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.5<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Update noise rate 0.8
                    </span>
                    </p>
 
@@ -503,7 +509,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.6<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Update noise std 0.6
                    </span>
                    </p>
 
@@ -516,7 +522,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.7<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Init noise rate 1
                    </span>
                    </p>
 
@@ -529,7 +535,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.8<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Init noise std 4.5
                    </span>
                    </p>
 
@@ -542,7 +548,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.9<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Rescaling 2.15
                    </span>
                    </p>
 
@@ -567,7 +573,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.11<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                    Obstacle number : 30
                    </span>
                    </p>
 	       </div>
@@ -578,7 +584,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.12<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Obstacle Radius 7.
                    </span>
                    </p>
 	       </div>
@@ -590,7 +596,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.13<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Obstacle speed 3
                    </span>
                    </p>
 
@@ -603,7 +609,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.14<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Update mask rate 0.2
                    </span>
                    </p>
 
@@ -616,7 +622,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.15<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Update noise rate 0.8
                    </span>
                    </p>
 
@@ -629,7 +635,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.16<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Update noise std 0.6
                    </span>
                    </p>
 
@@ -643,7 +649,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.17<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Init noise rate 1.
                    </span>
                    </p>
 
@@ -656,7 +662,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.18<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Init noise std 4.5
                    </span>
                    </p>
 
@@ -669,7 +675,7 @@ Caption
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S5.19<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Rescaling 2.15
                    </span>
                    </p>
 
@@ -678,6 +684,14 @@ Caption
 
 
 	      </div>
+        <p  style="font-size: 19px;color:#000000;text-align:center;" >
+          Video S5 : Illustration of the quantitative tests performed<br>
+           <span style="font-size: 14px;color:#A0A0A0;">
+          Videos of quantitative tests for 2 moving agents obtained by IMGEP. We display only a subset of the value tested for every quantitative test.
+           </span>
+           </p>
+
+
 </div>
       
       
@@ -687,7 +701,7 @@ Caption
  <h4> Qualitative </h4>
  
  
- <div class="l-screen">
+ <div class="l-screen-inset">
   <div class="container_row">
 
 
@@ -697,9 +711,9 @@ Caption
        <source src="public/custom_obstacles.mp4" type="video/mp4">
      </video>
      <p  style="font-size: 12px;color:#000000;text-align:center;" >
-       Video S6<br>
+       Video S6: Out of distribution obstacles<br>
         <span style="font-size: 10px;color:#A0A0A0;">
-       caption
+       Test of a moving agent obtained by IMGEP on obstacles that were not seen during training. 
         </span>
         </p>
 </div>
@@ -710,9 +724,9 @@ Caption
              <source src="public/solveMaze.mp4" type="video/mp4">
            </video>
            <p  style="font-size: 12px;color:#000000;text-align:center;" >
-             Video S7<br>
+             Video S7: Out of distribution obstacles, maze.<br>
              <span style="font-size: 10px;color:#A0A0A0;">
-             caption
+             Test of a moving agent to maze like obstacles.
              </span>
              </p>
 </div> 
@@ -722,9 +736,9 @@ Caption
                   <source src="public/harderEnv.mp4" type="video/mp4">
                 </video>
                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                  Video S8<br>
+                  Video S8: Bullet like environment<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Test of a moving agent to bullet like environment: fast small moving obstacles.
                   </span>
                   </p>
     </div>
@@ -734,7 +748,7 @@ Caption
 
 
 
-  <div class="l-screen">
+  <div class="l-screen-inset">
     <div class="container_row">
     
       <div class="column">
@@ -742,9 +756,9 @@ Caption
                     <source src="public/demo.mp4" type="video/mp4">
                   </video>
                   <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                  Video S9<br>
+                  Video S9: Individuality preservation<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  Moving agents colliding while keeping their individuality, they don't merge or collapse from the collision. 
                   </span>
                   </p>
                 </div>
@@ -757,9 +771,9 @@ Caption
                   </video>
                 
                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                  Video S10<br>
+                  Video S10: Reproduction<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  caption
+                  For some moving agents, under specific conditions, the collision of 2 agents can lead to the birth of a 3rd agent.
                   </span>
                   </p>
                 </div>
@@ -769,9 +783,9 @@ Caption
                                   <source src="public/stick.mp4" type="video/mp4">
                                 </video>
                                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                                  Video S11<br>
+                                  Video S11: Attraction<br>
                                   <span style="font-size: 10px;color:#A0A0A0;">
-                                  caption
+                                  Moving agents attracting each other while still maintaining their own individuality.
                                   </span>
                                   </p>
                                  
@@ -789,7 +803,7 @@ Caption
     </div>
 
 
-  <div class="l-screen">
+  <div class="l-screen-inset">
     <div class="container_row ">
 
  
@@ -798,9 +812,9 @@ Caption
                 <source src="public/asynchro.mp4" type="video/mp4">
               </video>
               <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                Video S12<br>
+                Video S12: Asynchronous update<br>
                 <span style="font-size: 10px;color:#A0A0A0;">
-                caption
+                Testing a moving agent with asynchronous updates. Each cell is updated with a certain probability at each step leading to cells being asynchronously updated.
                 </span>
                 </p>
     </div>
@@ -810,9 +824,9 @@ Caption
               <source src="public/smallerDie.mp4" type="video/mp4">
             </video>
             <p  style="font-size: 12px;color:#000000;text-align:center;" >
-              Video S13<br>
+              Video S13: Scaling the agents down<br>
               <span style="font-size: 10px;color:#A0A0A0;">
-              caption (kernel radius*0.4)
+              The moving agents size is reduced. The scaled down agents still seem to behave similarly (same shape and have sensorimotor capabilities) to the normal size one while being composed of less cells.
               </span>
               </p>
 
@@ -823,9 +837,12 @@ Caption
           <source src="public/damageHand.mp4" type="video/mp4">
         </video>
         <p  style="font-size: 12px;color:#000000;text-align:center;" >
-        Video S14<br>
+        Video S14: Morphological computation<br>
         <span style="font-size: 10px;color:#A0A0A0;">
-        caption
+        We pause the simulation and remove some cells of a moving agent. As a response to this alteration of the structure, 
+        the moving agent changes direction, reconstructs itself and moves away. 
+        This shows that the macro agent senses perturbations of its structure and respond to it by a morphological growth. 
+
         </span>
         </p>
         
@@ -846,7 +863,7 @@ Caption
 
  
 
-<div class="l-screen">
+<div class="l-screen-inset">
   <div class="container_row">
     
           <div class="column"></div>
@@ -857,9 +874,11 @@ Caption
                           <source src="public/attractLive.mp4" type="video/mp4">
                         </video>
                         <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                          Video S15<br>
+                          Video S15: External control.<br>
                           <span style="font-size: 10px;color:#A0A0A0;">
-                          caption
+                          We introduce an attractive element in another channel (in Cyan). We learned the rule that control the way this external element channel influences
+                          the learnable channel(Yellow) and display the resulting behavior here. The moving agent is effectively attracted to this introduce component. By controlling 
+                          the external element we can control live the direction of the moving agent.
                           </span>
                           </p>
                          
@@ -883,7 +902,7 @@ Caption
      
 
  
- <div class="l-screen">
+ <div class="l-screen-inset">
  <div class="container_row">
    
     <div class="column" >
@@ -907,8 +926,9 @@ Caption
    <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S16: Robustness to initialization<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Caption
- </span>
+  Testing the generalization/robustness to initial patterns. We replace the learned initial pattern by : left a disk with a gradient; middle a large disk (much larger than an agent); right 
+  right top a disk with gradient of another size, right bottom a disk without gradient. Some initialization lead to the robust emergence of one or several agents while some lead to the collapse of the pattern. 
+</span>
  </p>
    
    
@@ -948,10 +968,7 @@ Caption
    
  </div>
  <p  style="font-size: 19px;color:#000000;text-align:center;" >
-Video S17: Agent considered non moving by our test<br>
- <span style="font-size: 14px;color:#A0A0A0;">
-Caption
- </span>
+Video S17: Agent considered non moving by our moving test<br>
  </p>
 </div>
 
@@ -1038,52 +1055,18 @@ where the creatures obtained are long term stable. The video on the right displa
  
 
 
- <div class="l-page">
-<div id="gradientWall">
-<div class="container_row">
-    <div class="column">
-      <video id="robust" width="95%" autoplay loop muted="" class="videoShow">
-                    <source src="public/move7Wall.mp4" type="video/mp4">
-                  </video>
-    </div>
-    <div class="column">
-      <video id="robust" width="95%"  autoplay loop muted="" class="videoShow">
-                    <source src="public/move6Wall.mp4" type="video/mp4">
-                  </video>
-    </div>
- 
-  </div>
-<p  style="font-size: 14px;color:#A0A0A0;text-align:center;">
-
-c) Unofficial IMGEP no obstacle (i can test the "true" ones)
-</p>  
-
-<div class="container_row" id="resistColliDie">
-    <div class="column">
-      <video id="robust" width="95%" autoplay loop muted="" class="videoShow">
-                    <source src="public/move9wall.mp4" type="video/mp4">
-                  </video>
-    </div>
-    <div class="column">
-      <video id="robust" width="95%"  autoplay loop muted="" class="videoShow">
-                    <source src="public/move9dot.mp4" type="video/mp4">
-                  </video>
-    </div>
-
-</div>
-<p  style="font-size: 14px;color:#A0A0A0;text-align:center;">
-
-d) Some creatures obtained in unofficial IMGEP no obstacle resist some collisions (left) but often die from other collisions (right). The 
-creature is the same in both videos. (use true one)
-</p>  
-</div>
-</div>
-</div>
 
 <div class="l-page">
 <video id="robust" width="100%" controls="" autoplay loop muted="" class="videoShow">
               <source src="public/unstable.mp4" type="video/mp4">
             </video>
+            <p  style="font-size: 19px;color:#000000;text-align:center;" >
+              Video SX: Unstability<br>
+               <span style="font-size: 14px;color:#A0A0A0;">
+                Example of partial robustness of a moving agent. The agent is able to deal with some perturbation by obstacle but some other might break
+                the equilibrium (leading to explosion) 
+              </span>
+               </p>
 
           </div>
 
@@ -1091,6 +1074,13 @@ creature is the same in both videos. (use true one)
  <video id="kernelsVis" width=85% controls="" muted="" class="videoShow l-page" >
                     <source src="public/kernels.mp4" type="video/mp4">
                   </video>
+                  <p  style="font-size: 19px;color:#000000;text-align:center;" >
+                    Video SX: Visualization of each rule<br>
+                     <span style="font-size: 14px;color:#A0A0A0;">
+                      For the visualization of the role of each rule, we display the growth (in the magma colormap) of each of the 10 rules in the exterior videos. The inner top video shows the normal simulation.
+                      The inner bottom video displays the weighted sum of the growth of all the rules in grey level (1 being white and 0 being black), showing what is added to the current state of the learnable channel. 
+                    </span>
+                     </p>
 
                 </div>
 
