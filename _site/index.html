@@ -340,7 +340,7 @@ display: table;
  <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S1: Sensorimotor agents<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Different agents (in yellow) obtained by the IMGEP, with sensorimotor capabilities (reacting to perturbations by the obstacles (blue)). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the difference in activity in the agent as a response to perturbation.
+Different agents (yellow) emerging from rules obtained by the IMGEP. The agents display sensorimotor capabilities: they are robust and react to perturbations by the obstacles (blue). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the differences in activity in the agent as a response to perturbation.
  </span>
  </p>
 </div>
@@ -358,9 +358,7 @@ Different agents (in yellow) obtained by the IMGEP, with sensorimotor capabiliti
 <p   style="font-size: 19px;color:#000000;text-align:center;" >
 Video S2: Random search<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Each 100 squares are random parameters trials (each  1 channel and  10 rules so \(\sim \)  130 parameters for all the rules of a square). The parameters 
-control the local rules of interaction between cells, by changing the kernel shape (how a cell senses) and the growth function (how this sensing 
-is converted into growth). We observe that a lot of random search trials lead to death or explosion of the mass. Very little lead to stable spatially localized pattern and even less to moving ones. </span>
+Each 100 squares are random parameters trials (each  1 channel and  10 rules so \(\sim \)  130 parameters for all the rules of a square). We observe that a lot of random search trials lead to death or explosion of the mass. Very little lead to stable spatially localized pattern and even less to moving ones. </span>
  </p>
  
  
@@ -392,9 +390,9 @@ is converted into growth). We observe that a lot of random search trials lead to
 </div>
 
 <p   style="font-size: 19px;color:#000000;text-align:center;" >
-Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturbations<br>
+Video S3: Orbium, moving agent from the original lenia papers, fragile to external perturbations<br>
 <span style="font-size: 14px;color:#A0A0A0;">
-  Left: orbium, equivalent of the glider in Lenia (from the original lenia paper) an example of moving agent. Middle and right videos: collision between several orbium leading to death/explosion. This shows the fragility of the orbium to 
+  Left: Orbium: the equivalent of the glider in Lenia (from the original lenia paper), an example of moving agent. Middle and right videos: collision between several orbium leading to death/explosion. This shows the fragility of the orbium to 
   external perturbations.  
 </span>
 </p> 
@@ -464,7 +462,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
  Video S5: Agents obtained by each method<br>
   <span style="font-size: 14px;color:#A0A0A0;">
- 100 Patterns passing our agency tests obtained by random search,IMGEP, handmade search (from Lenia original papers). A lot of IMGEP obtained agents are moving agents with high speed.
+ 100 Patterns passing our agency tests obtained by each method (from left to right): random search,IMGEP, handmade search (from Lenia original papers). A lot of IMGEP obtained agents are moving agents with high speed while a lot of agents obtained by random search are static.
   </span>
   </p>
  </div>
@@ -509,7 +507,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
 
 
  <div class="l-screen-inset">
-  <div class="row">
+  <div id="moveobs_overview" class="row">
     
      <div class="column">
        <video id="robust" width="95%" controls  loop muted="" class="videoShow">
@@ -826,7 +824,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
        <source src="public/custom_obstacles.mp4" type="video/mp4">
      </video>
      <p  style="font-size: 12px;color:#000000;text-align:center;" >
-       Video S8: Out of distribution obstacles<br>
+       Video S8: Out of distribution obstacles: Different shapes<br>
         <span style="font-size: 10px;color:#A0A0A0;">
        Test of a moving agent obtained by IMGEP on obstacles that were not seen during training. 
         </span>
@@ -839,7 +837,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
              <source src="public/solveMaze.mp4" type="video/mp4">
            </video>
            <p  style="font-size: 12px;color:#000000;text-align:center;" >
-             Video S9: Out of distribution obstacles, maze.<br>
+             Video S9: Out of distribution obstacles: maze.<br>
              <span style="font-size: 10px;color:#A0A0A0;">
              Test of a moving agent to maze like obstacles.
              </span>
@@ -851,7 +849,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
                   <source src="public/harderEnv.mp4" type="video/mp4">
                 </video>
                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                  Video S10: Bullet like environment<br>
+                  Video S10: Out of distribution obstacles: Bullet like obstacles<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
                   Test of a moving agent to bullet like environment: fast small moving obstacles.
                   </span>
@@ -873,7 +871,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
                   <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S11: Individuality preservation<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  Moving agents colliding while keeping their individuality, they don't merge or collapse from the collision. 
+                  Example of moving agents obtained by IMGEP colliding while keeping their individuality, they don't merge or collapse from the collision. 
                   </span>
                   </p>
                 </div>
@@ -888,7 +886,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S12: Reproduction<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  For some moving agents, under specific conditions, the collision of 2 agents can lead to the birth of a 3rd agent.
+                  For some moving agents, under specific conditions, the collision of 2 agents can lead to the self-organization of a 3rd agent. (each with its own individuality)
                   </span>
                   </p>
                 </div>
@@ -900,7 +898,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
                                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
                                   Video S13: Attraction<br>
                                   <span style="font-size: 10px;color:#A0A0A0;">
-                                  Moving agents attracting each other while still maintaining their own individuality.
+                                  Example of moving agents attracting each other while still maintaining their own individuality.
                                   </span>
                                   </p>
                                  
@@ -955,8 +953,8 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
         Video S16: Morphological computation<br>
         <span style="font-size: 10px;color:#A0A0A0;">
         We pause the simulation and remove some cells of a moving agent. As a response to this alteration of the structure, 
-        the moving agent changes direction, reconstructs itself and moves away. 
-        This shows that the macro agent senses perturbations of its structure and respond to it by a morphological growth. 
+        the moving agent changes direction, regrow itself and moves away. 
+        This video isolates the fact that the macro agent senses perturbations of its structure and respond to it by a morphological growth. 
 
         </span>
         </p>
@@ -1041,7 +1039,7 @@ Video S3: Orbium, equivalent of the glider in Lenia, fragile to external perturb
    <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S18: Robustness to initialization<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-  Testing the generalization/robustness to initial patterns. We replace the learned initial pattern by : left a disk with a gradient; middle a large disk (much larger than an agent); right 
+  Testing the robustness of the learned rule to emerge an agent from different initial patterns. We replace the learned initial pattern by : left a disk with a gradient; middle a large disk (much larger than an agent); right 
   right top a disk with gradient of another size, right bottom a disk without gradient. Some initialization lead to the robust emergence of one or several agents while some lead to the collapse of the pattern. 
 </span>
  </p>
@@ -1083,7 +1081,7 @@ Video S18: Robustness to initialization<br>
    
  </div>
  <p  style="font-size: 19px;color:#000000;text-align:center;" >
-Video S19: Agent considered non moving by our moving test<br>
+Video S19: Examples of agents considered non moving by our moving test<br>
  </p>
 </div>
 
