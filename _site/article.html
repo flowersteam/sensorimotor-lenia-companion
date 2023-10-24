@@ -225,7 +225,7 @@
  <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S1: Sensorimotor agents<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Different agent (in yellow) obtained by the IMGEP, with sensorimotor capabilities (reacting to perturbations by the obstacles (blue)). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the difference in activity in the agent.
+Different agents (in yellow) obtained by the IMGEP, with sensorimotor capabilities (reacting to perturbations by the obstacles (blue)). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the difference in activity in the agent as a response to perturbation.
  </span>
  </p>
 </div>
@@ -981,77 +981,6 @@ Video S17: Agent considered non moving by our moving test<br>
 
 
 
-<div class="l-screen">
-<div class='row'>
- <div class="column">
-      <video id="robust" width="95%"  loop controls  muted="" class="videoShow">
-                    <source src="public/innerOuter.mp4" type="video/mp4">
-                  </video>
-<p  style="font-size: 14px;color:#A0A0A0;text-align:center;" >
-Run 1
- </p>
-    </div>
-    <div class="column">
-      <video id="robust" width="95%" controls loop   muted="" class="videoShow">
-                    <source src="public/innerOuter7.mp4" type="video/mp4">
-                  </video>
-<p  style="font-size: 14px;color:#A0A0A0;text-align:center;" >
-Run 2
- </p>
-</div>
-</div>
-</div>
-<p  style="font-size: 19px;color:#000000;text-align:center;" class="l-screen-inset">
-Results of successive outer (top) and inner (bottom) optimization steps in practice in 2 different runs <br>
- <span style="font-size: 14px;color:#A0A0A0;"> 
-This figure shows how the bi-level optimization (an inner loop inside of an outer loop) progressively evolves moving creatures. For each run, the upper-left video corresponds to the creature obtained after initialization of the parameters (before optimization), which is not able to move at all. After several outer steps (shown at the top and separated by blue lines), we can see how the evolved creatures improve their behavior, with the upper-right one (at the end of the bi-level optimization) reaching quickly the edge of the grid. At the bottom, a "zoom" (represented by the red lines) 
- on the first outer step (between first and second top videos)
-shows in more details the successive small improvements made by the inner loop
- (gradient steps)  during first outer step. Each inner step slightly  improves the creature by making it go a little further. At the end of 
-these inner steps, we get the result of the first outer step (second top video).
-</span>
- </p><br>
-</div>
-
-
-
-
-
-
- 
-
-<div class="l-screen-inset">
-  <div class="row">
-    <div class="column" style="
-    /* width: auto; */
-    width: 70%;
-">
-      <video id="robust" controls=""  loop="" muted="" class="videoShow" style="
-    width: 95%;
-">
-                    <source src="public/moveBar.mp4" type="video/mp4">
-                  </video>
-    </div>
-<div class="column" style="
-    width: 35%;
-">
-      <video id="robust" controls=""  loop="" muted="" class="videoShow" style="
-    width: 95%;
-">
-                    <source src="public/moveBarDie.mp4" type="video/mp4">
-                  </video>
-    </div>
-  </div>
-
-
-<p  style="font-size: 19px;color:#000000;text-align:center;" class="l-middle-outset">
-    Robustness of learned moving creatures over longer time spans than in the training process.<br>
- <span style="font-size: 14px;color:#A0A0A0;"> Each square is the result of 1 trial of the method. The video on the left displays successes of the method 
-where the creatures obtained are long term stable. The video on the right displays trials where the creatures obtained die few steps after the
- number of timesteps it has been trained on. The last creature on the right 
- tries as much as possible to fit the target at last seen timestep resulting in a death right after. </span>
- </p><br>
-</div>
  
 
 
