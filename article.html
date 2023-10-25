@@ -20,24 +20,23 @@
 <nav id="infoDemoAdvanced" style="margin-left:2em;display:none">
       
       <li> <b>Press play to begin</b> </li>
-      <li>Place creature by clicking on the dark screen with  <b>Creature</b> mode selected)</li>
-      <li>(Note that the multi creature setting was not seen during training)</li>
-      <li>Now place obstacles by selecting <b>Wall dot</b> and then clicking or dragging  on the screen  </li>
-      <li>You can erase by selecting the <b>Eraser</b> mode and then clicking or dragging on the screen  </li>
-      <li> You can choose the brush size to draw bigger obstacles/ clear bigger areas etc</li>
-      <li> To zoom, select zoom mode, select zoom magnitude with the slider and then click where you want to zoom<br>Keep dragging to follow the creature </li>
+      <li> Place creature by clicking on the dark screen with <b>Creature</b> mode selected (note that the multi creature setting was not seen during training)</li>
+      <li> Now place obstacles by selecting <b>Wall dot</b> and then clicking or dragging  on the screen  </li>
+      <li> You can erase by selecting the <b>Eraser</b> mode and then clicking or dragging on the screen  </li>
+      <li> You can choose the brush size to draw bigger obstacles, add more matter, clear bigger areas, etc. </li>
+      <li> To zoom, select zoom mode, select zoom magnitude with the slider and then click where you want to zoom. <br>Keep dragging to follow the creature </li>
 <li> For the attractor, click and drag for a short distance attractor (Still experimental, works best with creature 2) </li>    
-<li> You can upload images through browse, We advise you to use small images (as big ones will make large grid that are computationally heavy)</li>   
+<li> You can upload images with the "Choose File" button, but we advise you to use small images (as big ones will make large grid that are computationally heavy) </li>   
  
   </nav>
 <nav id="infoDemo" style="margin-left:2em;display:block">
 
-<li> The demo displays  a differentiable continuous cellular automaton (CA) system where an emerging "creature" (yellow) is the result of local rules applied on the whole grid. The blue elements are obstacles (and are also part of the CA system).The rules leading to these very robust creatures were obtained using gradient descent,diversity search and curriculum learning.   </li>
+<li> The demo displays  a differentiable continuous cellular automaton (CA) system where an emerging "creature" (yellow) is the result of local rules applied on the whole grid. The blue elements are obstacles (and are also part of the CA system). The rules leading to these very robust creatures were obtained using gradient descent, diversity search and curriculum learning. </li>
     <li> <b>Press play to begin</b>  (The demo won't work on phone) </li>
-      <li>Choose the type of creature on the left (each creature morphology is the result of different rules in the CA)</li>
-      <li>Choose pre defined environments at the bottom </li>
-      <li>Draw obstacles by clicking on the canvas  </li>
-<li>More options available at Advanced Options  </li>
+      <li> Choose the type of creature on the left (each creature morphology is the result of different rules in the CA)</li>
+      <li> Choose predefined environments at the bottom </li>
+      <li> Draw obstacles by clicking on the canvas  </li>
+<li> More options available at Advanced Options  </li>
   </nav>
     </d-content>
 <div class="radio-toolbar" id="radioCrea" style="float:left;margin-left:calc(50% - 1284px/2);width:50px">
@@ -225,7 +224,7 @@
  <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S1: Sensorimotor agents<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Different agents (yellow) emerging from rules obtained by the IMGEP. The agents display sensorimotor capabilities: they are robust and react to perturbations by the obstacles (blue). The righmost video shows the system with a different colormap (fixed obstacle channel in black) to highlight the differences in activity in the agent as a response to perturbation.
+Different agents (yellow) emerging from rules obtained by the IMGEP. The agents display sensorimotor capabilities: they are robust and react to perturbations by the obstacles (blue). The rightmost video shows the system with a different colormap to highlight the differences in activity in the agent as a response to perturbations (obstacles shown in black).
  </span>
  </p>
 </div>
@@ -243,7 +242,7 @@ Different agents (yellow) emerging from rules obtained by the IMGEP. The agents 
 <p   style="font-size: 19px;color:#000000;text-align:center;" >
 Video S2: Random search<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-Each 100 squares are random parameters trials (each  1 channel and  10 rules so \(\sim \)  130 parameters for all the rules of a square). We observe that a lot of random search trials lead to death or explosion of the mass. Very little lead to stable spatially localized pattern and even less to moving ones. </span>
+100 random parameters trials in Lenia (one trial per square). We use the 1-channel and 10-rules variant of Lenia is used, with 13 parameters per rule such that the parameter space is \(\sim \) 130-dimensional. We observe that a lot of random search trials lead to death or explosion of the mass. Only a small portion of these trials lead to stable spatially localized patterns, and even fewer produce moving patterns (actually none in this example). </span>
  </p>
  
  
@@ -275,10 +274,9 @@ Each 100 squares are random parameters trials (each  1 channel and  10 rules so 
 </div>
 
 <p   style="font-size: 19px;color:#000000;text-align:center;" >
-Video S3: Orbium, moving agent from the original lenia papers, fragile to external perturbations<br>
+Video S3: Orbium, a moving agent from the original Lenia paper, is fragile to external perturbations<br>
 <span style="font-size: 14px;color:#A0A0A0;">
-  Left: Orbium: the equivalent of the glider in Lenia (from the original lenia paper), an example of moving agent. Middle and right videos: collision between several orbium leading to death/explosion. This shows the fragility of the orbium to 
-  external perturbations.  
+  (Left) Orbium, the first moving agent discovered in Lenia (from the original Lenia paper) reminiscent of the "glider" in Conway's Game of Life. (Middle-Right)  Collisions between several orbiums leading to death/explosion. This shows the fragility of the orbium to external perturbations.  
 </span>
 </p> 
       
@@ -307,9 +305,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
   </div>
   
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
-    Video S4: Orbium perturbed by obstacles. <br>
+    Video S4: Orbium perturbed by obstacles <br>
     <span style="font-size: 14px;color:#A0A0A0;">
-      Orbium, equivalent of the glider in Lenia (from the original lenia paper), dies from perturbations by obstacles.
+      The orbium also dies from perturbations by obstacles.
     </span>
     </p> 
 </div>
@@ -324,7 +322,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
        <video id="robust" width="95%" controls  loop muted="" class="videoShow">
                      <source src="public/random_overwiew_contour.mp4" type="video/mp4">
                    </video>
-        <p style="text-align:center;"> Random search</p>
+        <p style="text-align:center;"> Random search </p>
      </div>
  <div class="column">
        <video id="sensorimotor_agents" width="95%" controls loop muted="" class="videoShow">
@@ -345,9 +343,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
     
   </div>
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
- Video S5: Agents obtained by each method<br>
+ Video S5: Agents obtained by the different exploration methods <br>
   <span style="font-size: 14px;color:#A0A0A0;">
- 100 Patterns passing our agency tests obtained by each method (from left to right): random search,IMGEP, handmade search (from Lenia original papers). A lot of IMGEP obtained agents are moving agents with high speed while a lot of agents obtained by random search are static.
+ 100 patterns passing the agency test (see paper) discovered by the different exploration methods (from left to right): random search, IMGEP search and handmade search (i.e. discoveries from the original Lenia papers). We can observe that many of the agents obtained by the IMGEP are moving agents with high speed, whereas a significant number of agents obtained through random search remain static.
   </span>
   </p>
  </div>
@@ -398,7 +396,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
        <video id="robust" width="95%" controls  loop muted="" class="videoShow">
                      <source src="public/random_movobsb.mp4" type="video/mp4">
                    </video>
-        <p style="text-align:center;"> Random search</p>
+        <p style="text-align:center;"> Random search </p>
      </div>
  <div class="column">
        <video id="sensorimotor_agents" width="95%" controls loop muted="" class="videoShow">
@@ -421,14 +419,13 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
   <p  style="font-size: 19px;color:#000000;text-align:center;" >
  Video S6: Moving obstacle test on agents obtained by each method<br>
   <span style="font-size: 14px;color:#A0A0A0;">
- 100 Agents obtained by random search,IMGEP, handmade search (from Lenia original papers). We observe that the proportion of agents with robustness to moving obstacles is much higher in the agents obtained by IMGEP than the ones obtained
- by random search and handmade search. 
+ 100 agents obtained through random search, IMGEP, and handmade search (same agents as in video S5). We observe that the proportion of agents exhibiting robustness against moving obstacles is significantly higher in those obtained through IMGEP compared to those obtained through random search and handmade search.
   </span>
   </p>
  </div>
 
 
- <h4> Quantitative</h4>
+ <h4> Quantitative Evaluation </h4>
  <div class="l-screen-inset">
 	 <div class="row ">
     <div class="column">
@@ -441,7 +438,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S7.1<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  Obstacle number : 30
+                  Obstacle number 30
                    </span>
                    </p>
 	       </div>
@@ -571,7 +568,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S7.11<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                    Obstacle number : 30
+                    Obstacle number 30
                    </span>
                    </p>
 	       </div>
@@ -582,7 +579,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S7.12<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  Obstacle Radius 7.
+                  Obstacle Radius 7
                    </span>
                    </p>
 	       </div>
@@ -647,7 +644,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                  <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S7.17<br>
                    <span style="font-size: 10px;color:#A0A0A0;">
-                  Init noise rate 1.
+                  Init noise rate 1
                    </span>
                    </p>
 
@@ -683,9 +680,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
 
 	      </div>
         <p  style="font-size: 19px;color:#000000;text-align:center;" >
-          Video S7 : Illustration of the quantitative tests performed<br>
+          Video S7 : Illustration of the quantitative generalization tests<br>
            <span style="font-size: 14px;color:#A0A0A0;">
-          Videos of quantitative tests for 2 moving agents obtained by IMGEP. We display only a subset of the value tested for every quantitative test.
+          Examples of robustness tests that we performed to quantitatively evaluate the generalization capabilities of the discovered moving agents (here shown for 2 moving agents obtained by the IMGEP) to different out-of-distribution parametrized perturbations. Note that we display only a subset of the values tested for every quantitative test.
            </span>
            </p>
 
@@ -696,7 +693,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
       
  
  
- <h4> Qualitative </h4>
+ <h4> Qualitative Evaluation</h4>
  
  
  <div class="l-screen-inset">
@@ -709,9 +706,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
        <source src="public/custom_obstacles.mp4" type="video/mp4">
      </video>
      <p  style="font-size: 12px;color:#000000;text-align:center;" >
-       Video S8: Out of distribution obstacles: Different shapes<br>
+       Video S8: Out of distribution obstacles - Different shapes<br>
         <span style="font-size: 10px;color:#A0A0A0;">
-       Test of a moving agent obtained by IMGEP on obstacles that were not seen during training. 
+       Test of a moving agent (obtained by IMGEP) on varying obstacle shapes that were not seen during training. 
         </span>
         </p>
 </div>
@@ -722,9 +719,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
              <source src="public/solveMaze.mp4" type="video/mp4">
            </video>
            <p  style="font-size: 12px;color:#000000;text-align:center;" >
-             Video S9: Out of distribution obstacles: maze.<br>
+             Video S9: Out of distribution obstacles - Maze<br>
              <span style="font-size: 10px;color:#A0A0A0;">
-             Test of a moving agent to maze like obstacles.
+             Test of a moving agent to "maze" like obstacles.
              </span>
              </p>
 </div> 
@@ -734,9 +731,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                   <source src="public/harderEnv.mp4" type="video/mp4">
                 </video>
                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                  Video S10: Out of distribution obstacles: Bullet like obstacles<br>
+                  Video S10: Out of distribution obstacles - "Bullet" like obstacles<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  Test of a moving agent to bullet like environment: fast small moving obstacles.
+                  Test of a moving agent to a "bullet" like environment with fast small moving obstacles.
                   </span>
                   </p>
     </div>
@@ -756,7 +753,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                   <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S11: Individuality preservation<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  Example of moving agents obtained by IMGEP colliding while keeping their individuality, they don't merge or collapse from the collision. 
+                  Example of moving agents (obtained by IMGEP) able to maintain their individuality despite colliding with other agents on the grid. Contrary to the orbium pattern shown in Video S3, they do not merge nor collapse from the collision. 
                   </span>
                   </p>
                 </div>
@@ -771,7 +768,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                 <p  style="font-size: 12px;color:#000000;text-align:center;" >
                   Video S12: Reproduction<br>
                   <span style="font-size: 10px;color:#A0A0A0;">
-                  For some moving agents, under specific conditions, the collision of 2 agents can lead to the self-organization of a 3rd agent. (each with its own individuality)
+                  For some moving agents, under specific conditions, we observe that the collision of two agents can lead to the self-organization of a third agent (each with its own individuality).
                   </span>
                   </p>
                 </div>
@@ -810,7 +807,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                 <source src="public/asynchro.mp4" type="video/mp4">
               </video>
               <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                Video S14: Asynchronous update<br>
+                Video S14: Asynchronous updates<br>
                 <span style="font-size: 10px;color:#A0A0A0;">
                 Testing a moving agent with asynchronous updates. Each cell is updated with a certain probability at each step leading to cells being asynchronously updated.
                 </span>
@@ -824,7 +821,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
             <p  style="font-size: 12px;color:#000000;text-align:center;" >
               Video S15: Scaling the agents down<br>
               <span style="font-size: 10px;color:#A0A0A0;">
-              The moving agents size is reduced. The scaled down agents still seem to behave similarly (same shape and have sensorimotor capabilities) to the normal size one while being composed of less cells.
+              Testing a moving agent with reduced size (i.e. with fewer cells, see paper). The scaled-down agents appear to behave similarly than the normal size ones (maintaining the same shape and sensorimotor capabilities), despite having fewer cells to perform the computation.
               </span>
               </p>
 
@@ -837,9 +834,9 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
         <p  style="font-size: 12px;color:#000000;text-align:center;" >
         Video S16: Morphological computation<br>
         <span style="font-size: 10px;color:#A0A0A0;">
-        We pause the simulation and remove some cells of a moving agent. As a response to this alteration of the structure, 
+        In this example, we pause the simulation and remove some cells of a moving agent. As a response to this alteration of the structure, 
         the moving agent changes direction, regrow itself and moves away. 
-        This video isolates the fact that the macro agent senses perturbations of its structure and respond to it by a morphological growth. 
+        This video illustrates the fact that the macro agent senses perturbations of its structure and respond to it by a morphological growth. 
 
         </span>
         </p>
@@ -872,11 +869,10 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
                           <source src="public/attractLive.mp4" type="video/mp4">
                         </video>
                         <p  style="font-size: 12px;color:#000000;text-align:center;" >
-                          Video S17: External control.<br>
+                          Video S17: External control <br>
                           <span style="font-size: 10px;color:#A0A0A0;">
-                          We introduce an attractive element in another channel (in Cyan). We learned the rule that control the way this external element channel influences
-                          the learnable channel(Yellow) and display the resulting behavior here. The moving agent is effectively attracted to this introduce component. By controlling 
-                          the external element we can control live the direction of the moving agent.
+                          In this example, we introduce an attractive element in another channel (shown in cyan). The rule that controls how this external element influences the agent channel (yellow) has been learned to foster attraction, and we display the resulting behavior here. The moving agent is effectively attracted toward this newly introduced component. By controlling 
+                          the position of this external element, we can dynamically steer the direction of the moving agent.
                           </span>
                           </p>
                          
@@ -924,8 +920,7 @@ Video S3: Orbium, moving agent from the original lenia papers, fragile to extern
    <p  style="font-size: 19px;color:#000000;text-align:center;" >
 Video S18: Robustness to initialization<br>
  <span style="font-size: 14px;color:#A0A0A0;">
-  Testing the robustness of the learned rule to emerge an agent from different initial patterns. We replace the learned initial pattern by : left a disk with a gradient; middle a large disk (much larger than an agent); right 
-  right top a disk with gradient of another size, right bottom a disk without gradient. Some initialization lead to the robust emergence of one or several agents while some lead to the collapse of the pattern. 
+  In these examples, we test the robustness of the learned rule in self-organizing an agent from various initial patterns. We replace the original learned initial pattern by: (left) a disk with gradient activation, (middle) a large disk (much larger than an agent), (right-top) a larger disk with gradient activation, (right-bottom) a larger disk with uniform activation. Some of these initializations lead to the robust emergence of one or several agents, while others lead to the collapse of the pattern. 
 </span>
  </p>
    
@@ -945,7 +940,7 @@ Video S18: Robustness to initialization<br>
  
 
  
-<h3> additional </h3>
+<h3> Additional </h3>
 
 
 
@@ -990,7 +985,7 @@ Video S19: Examples of agents considered non moving by our moving test<br>
             <p  style="font-size: 19px;color:#000000;text-align:center;" >
               Video S20: Unstability<br>
                <span style="font-size: 14px;color:#A0A0A0;">
-                Example of partial robustness of a moving agent. The agent is able to deal with some perturbation by obstacle but some other might break
+                Example of partial robustness of a moving agent. The agent is able to deal with some perturbation by obstacles but some other might break
                 the equilibrium (leading to explosion) 
               </span>
                </p>
@@ -1002,9 +997,9 @@ Video S19: Examples of agents considered non moving by our moving test<br>
                     <source src="public/kernels.mp4" type="video/mp4">
                   </video>
                   <p  style="font-size: 19px;color:#000000;text-align:center;" >
-                    Video S21: Visualization of each rule<br>
+                    Video S21: Visualizing the role of the different learned rules<br>
                      <span style="font-size: 14px;color:#A0A0A0;">
-                      For the visualization of the role of each rule, we display the growth (in the magma colormap) of each of the 10 rules in the exterior videos. The inner top video shows the normal simulation.
+                      To try to visualize and interpret thes role of the different learned rules (10 per discovered agent), we display the growth (in the magma colormap) of each of the 10 rules in the exterior videos. The inner top video shows the standard simulation.
                       The inner bottom video displays the weighted sum of the growth of all the rules in grey level (1 being white and 0 being black), showing what is added to the current state of the learnable channel. 
                     </span>
                      </p>
